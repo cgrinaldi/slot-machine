@@ -1,0 +1,27 @@
+#slot-machine {
+  position: absolute;
+  top: 20%;
+  left: 30%;
+  height: 411px;
+  width: 533px;
+  background-image: url('./img/slot-machine.png');
+
+  #slots {
+    position: absolute;
+    top: 140px;
+    left: 57px;
+    width: 353px;
+    height: 146px;
+    padding-left: 8px;
+    padding-top: 11px;
+
+    .slot {
+      border: 2px solid #666;
+      height: 120px;
+      width: 100px;
+      float: left;
+      margin-right: 4px;
+      margin-left: 4px;
+    }
+  }
+}
