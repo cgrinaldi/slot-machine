@@ -6,14 +6,38 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Espresso Bar Slot Machine</title>
     <link rel="stylesheet" href="main.css">
+    <script src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
   </head>
   <body>
     <div id="slot-machine">
       <div id="slots">
-        <div class="slot slot-1"></div>
-        <div class="slot slot-2"></div>
-        <div class="slot slot-3"></div>
+        <div class="container">
+          <div class="slot slot-1">
+            <figure>1</figure>
+            <figure>2</figure>
+            <figure>3</figure>
+          </div>
+        </div>
+        <div class="container">
+          <div class="slot slot-2">
+            <figure>1</figure>
+            <figure>2</figure>
+            <figure>3</figure>
+          </div>
+        </div>
+        <div class="container">
+          <div class="slot slot-3">
+            <figure>1</figure>
+            <figure>2</figure>
+            <figure>3</figure>
+          </div>
+        </div>
       </div>
+    </div>
+    <div class="controls">
+      <button id="btn1">1</button>
+      <button id="btn2">2</button>
+      <button id="btn3">3</button>
     </div>
     <script src="app.js"></script>
   </body>
