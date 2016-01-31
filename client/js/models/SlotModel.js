@@ -18,10 +18,6 @@ Slot.prototype.getRandomPanel = function() {
   }
 };
 
-// NOTE: We don't need to be updating the model every 100ms. Instead, we can
-// just use hte view to make it seem like it is updating, but we only really
-// care when it start/stops
-
 // When a slot is started, we increment the panel and angle continuously
 Slot.prototype.start = function () {
   var slot = this;

@@ -15,7 +15,6 @@ module.exports = {
     this.isRunning = false;
     for (var i = 0; i < this.slots.length; i++) {
       (function(slot, i) {
-        console.log('slot is', slot);
         setTimeout(function() {
           slot.stop();
         }, 650 * i);
