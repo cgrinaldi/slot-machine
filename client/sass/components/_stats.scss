@@ -1,0 +1,19 @@
+#stats {
+  width: 300px;
+  height: 25px;
+  border: 1px solid #aaa;
+  background-color: #aaa;
+  border-radius: 10px;
+  position: relative;
+  top: 610px;
+  margin: 0 auto;
+  padding: 10px;
+  text-align: center;
+
+  div {
+    display: inline-block;
+    color: #fff;
+    font-size: 24px;
+    margin-right: 20px;
+  }
+}
