@@ -18,7 +18,7 @@ SlotView.prototype.spin = function(currAngle) {
   var slot = this.$slot;
   this.timer = setInterval(function() {
     slot.css({
-      transform: 'translateZ(-60px) rotateX(-' + currAngle + 'deg)'
+      transform: 'translateZ(-35px) rotateX(-' + currAngle + 'deg)'
     });
     currAngle += 120;
   }, 75);
@@ -27,7 +27,7 @@ SlotView.prototype.spin = function(currAngle) {
 SlotView.prototype.stop = function(currAngle) {
   clearInterval(this.timer);
   this.$slot.css({
-    transform: 'translateZ(-60px) rotateX(-' + currAngle + 'deg)'
+    transform: 'translateZ(-35px) rotateX(-' + currAngle + 'deg)'
   });
 };
 

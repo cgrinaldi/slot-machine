@@ -13,8 +13,13 @@ module.exports = {
   },
   stop: function () {
     this.isRunning = false;
-    this.slots.forEach(function(slot) {
-      slot.stop();
-    });
+    for (var i = 0; i < this.slots.length; i++) {
+      (function(slot, i) {
+        console.log('slot is', slot);
+        setTimeout(function() {
+          slot.stop();
+        }, 650 * i);
+      })(this.slots[i], i);
+    }
   }
 };
