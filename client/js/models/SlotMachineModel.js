@@ -62,7 +62,6 @@ module.exports = {
         global.emitter.emit('win', this.prizes[matchPanel]);
       } else {
         this.winsLosses[1]++;
-        global.emitter.emit('win', this.prizes[matchPanel]);
       }
       global.emitter.emit('spinDone', this.winsLosses);
     }.bind(this), 500)
