@@ -7,5 +7,6 @@ module.exports = {
     } else {
       SlotMachine.start();
     }
-  }
+  },
+
 };
