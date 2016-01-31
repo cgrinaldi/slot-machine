@@ -5,7 +5,10 @@ module.exports = {
   init: function (){
     this.$playButton = $('#playButton');
     this.$playButton.click(function() {
-      SlotMachineController.play();
+      // Only want the user to be able to click if machine not already running
+      if (!SlotMachineController.isRunning()) {
+        SlotMachineController.play();
+      }
     });
     this.render();
   },
