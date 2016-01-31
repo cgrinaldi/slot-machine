@@ -2,15 +2,21 @@ var SlotMachine = require('../models/SlotMachineModel.js');
 
 module.exports = {
   play: function() {
-    if (SlotMachine.isRunning) {
+    SlotMachine.start();
+    setTimeout(function() {
       SlotMachine.stop();
-    } else {
-      SlotMachine.start();
-    }
+    }, 1000);
   },
 
   getWinsLosses: function() {
     return SlotMachine.winsLosses;
+  },
+
+  isRunning: function() {
+    if (SlotMachine.isRunning) {
+      return true;
+    }
+    return false;
   }
 
 };

@@ -31,13 +31,13 @@ module.exports = {
 
   stop: function () {
     var machine = this;
-    this.isRunning = false;
     for (var i = 0; i < this.slots.length; i++) {
       (function(slot, i) {
         setTimeout(function() {
           slot.stop();
           // Check to see if winner once all stopped
           if (i === 2) {
+            machine.isRunning = false;
             machine.isWinner();
           }
         }, 650 * i);
@@ -62,7 +62,6 @@ module.exports = {
         global.emitter.emit('win', this.prizes[matchPanel]);
       } else {
         this.winsLosses[1]++;
-        global.emitter.emit('win', this.prizes[matchPanel]);
       }
       global.emitter.emit('spinDone', this.winsLosses);
     }.bind(this), 500)
