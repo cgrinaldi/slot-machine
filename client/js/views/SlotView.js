@@ -10,7 +10,7 @@ SlotView.prototype.init = function() {
     slot.spin(data.currAngle);
   });
   global.emitter.on(slot.slotName + ':stop', function(data) {
-    slot.stop();
+    slot.stop(data.currAngle);
   })
 };
 
@@ -21,11 +21,14 @@ SlotView.prototype.spin = function(currAngle) {
       transform: 'translateZ(-60px) rotateX(-' + currAngle + 'deg)'
     });
     currAngle += 120;
-  }, 500);
+  }, 75);
 };
 
-SlotView.prototype.stop = function() {
+SlotView.prototype.stop = function(currAngle) {
   clearInterval(this.timer);
+  this.$slot.css({
+    transform: 'translateZ(-60px) rotateX(-' + currAngle + 'deg)'
+  });
 };
 
 module.exports = SlotView;
