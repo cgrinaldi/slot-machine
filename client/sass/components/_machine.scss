@@ -49,11 +49,15 @@
           line-height: 116px;
           font-size: 120px;
           color: white;
-          background-color: #323267;
+          background-color: #E4E2FF;
 
           &:nth-child(1) { transform: rotateX(0deg) translateZ(35px); }
           &:nth-child(2) { transform: rotateX(120deg) translateZ(35px); }
           &:nth-child(3) { transform: rotateX(240deg) translateZ(35px); }
+
+          img {
+            width: 90px
+          }
         }
       }
     }
