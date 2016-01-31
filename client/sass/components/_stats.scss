@@ -1,19 +1,22 @@
 #stats {
-  width: 300px;
+  width: 500px;
   height: 25px;
-  border: 1px solid #aaa;
-  background-color: #aaa;
+  min-width: $minWidth;
+  // border: 1px solid #aaa;
+  // background-color: #aaa;
   border-radius: 10px;
   position: relative;
-  top: 610px;
+  top: -20px;
+  left: -15px;
   margin: 0 auto;
   padding: 10px;
   text-align: center;
 
   div {
     display: inline-block;
-    color: #fff;
-    font-size: 24px;
-    margin-right: 20px;
+    // color: #fff;
+    color: #333;
+    font-size: 40px;
+    margin-right: 30px;
   }
 }
