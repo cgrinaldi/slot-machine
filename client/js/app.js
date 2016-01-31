@@ -1,2 +1,2 @@
-var SlotView = require('./views/SlotView.js');
-SlotView.init();
+var SlotMachineView = require('./views/SlotMachineView.js');
+SlotMachineView.init();

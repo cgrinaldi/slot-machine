@@ -1,15 +1,10 @@
-var SlotMachineController = require('../controllers/SlotMachineController.js');
-
 module.exports = {
-  init: function() {
-    this.$slot = $('.slot-1');
-    this.$playButton = $('#playButton');
-    this.$playButton.click(function() {
-      SlotMachineController.play();
-    });
+  init: function(slotClass) {
+    this.$slot = $(slotClass);
+    this.render();
   },
 
   render: function() {
-
+    this.$slot.html('Yay!');
   }
 }
