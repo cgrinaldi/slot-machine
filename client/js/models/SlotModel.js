@@ -1,4 +1,5 @@
-function Slot() {
+function Slot(name) {
+  this.name = name;
   this.isRunning = false;
   this.getRandomPanel();
 }
@@ -7,32 +8,32 @@ Slot.prototype.getRandomPanel = function() {
   var rand = Math.random();
   if (rand < 0.33) {
     this.currPanel = 0;
-    this.currentAngle = 0;
+    this.currAngle = 0;
   } else if (rand < 0.66) {
     this.currPanel = 1;
-    this.currentAngle = 120;
+    this.currAngle = 120;
   } else {
     this.currPanel = 2;
-    this.currentAngle = 240;
+    this.currAngle = 240;
   }
 };
+
+// NOTE: We don't need to be updating the model every 100ms. Instead, we can
+// just use hte view to make it seem like it is updating, but we only really
+// care when it start/stops
 
 // When a slot is started, we increment the panel and angle continuously
 Slot.prototype.start = function () {
   var slot = this;
   slot.isRunning = true;
-  slot.timer = setInterval(function() {
-    slot.currentAngle += 120;
-    slot.currPanel = (slot.currPanel + 1) % 3;
-    console.log('on panel', slot.currPanel);
-  }, 100);
+  global.emitter.emit(this.name + ':start', {currAngle: this.currAngle});
 };
 
 // When stopping, remove timer and select random panel to end on
 Slot.prototype.stop = function() {
   this.isRunning = false;
-  clearInterval(this.timer);
   this.getRandomPanel();
+  global.emitter.emit(this.name + ':stop', {currAngle: this.currAngle});
   console.log('stoped on panel', this.currPanel);
 }
 

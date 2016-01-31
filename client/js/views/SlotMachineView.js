@@ -11,8 +11,8 @@ module.exports = {
   },
 
   render: function() {
-    ['.slot-1','.slot-2','.slot-3'].forEach(function(slotClass){
-      SlotView.init(slotClass);
+    ['slot-1','slot-2','slot-3'].forEach(function(slotClass){
+      new SlotView.init(slotClass);
     });
   }
 }

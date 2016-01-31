@@ -1,7 +1,7 @@
 var Slot = require('./slotModel.js');
 
 module.exports = {
-  slots: [new Slot(), new Slot(), new Slot()],
+  slots: [new Slot('slot-1'), new Slot('slot-2'), new Slot('slot-3')],
 
   isRunning: false,
 
