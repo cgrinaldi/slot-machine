@@ -7,5 +7,10 @@ module.exports = {
     } else {
       SlotMachine.start();
     }
+  },
+
+  getWinsLosses: function() {
+    return SlotMachine.winsLosses;
   }
+
 };
