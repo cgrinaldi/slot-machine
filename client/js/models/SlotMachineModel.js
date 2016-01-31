@@ -54,12 +54,17 @@ module.exports = {
       }
     }
     var hasWon = counter === 3 ? true : false;
-    if (hasWon) {
-      this.winsLosses[0]++;
-      global.emitter.emit('win', this.prizes[matchPanel]);
-    } else {
-      this.winsLosses[1]++;
-      global.emitter.emit('loss');
-    }
+
+    // Add a slight delay since the slot is still visually spinning
+    setTimeout(function() {
+      if (hasWon) {
+        this.winsLosses[0]++;
+        global.emitter.emit('win', this.prizes[matchPanel]);
+      } else {
+        this.winsLosses[1]++;
+        global.emitter.emit('loss');
+      }
+      global.emitter.emit('spinDone', this.winsLosses);
+    }.bind(this), 500)
   }
 };

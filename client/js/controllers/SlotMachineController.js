@@ -9,4 +9,8 @@ module.exports = {
     }
   },
 
+  getWinsLosses: function() {
+    return SlotMachine.winsLosses;
+  }
+
 };
