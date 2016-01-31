@@ -8,15 +8,15 @@ module.exports = {
   prizes: [
     {
       name: 'Coffee',
-      imgSrc: 'http://placehold.it/350x350'
+      imgSrc: 'img/coffee-prize.png'
     },
     {
       name: 'Tea',
-      imgSrc: 'http://placehold.it/350x350'
+      imgSrc: 'img/tea-prize.png'
     },
     {
       name: 'Espresso',
-      imgSrc: 'http://placehold.it/350x350'
+      imgSrc: 'img/espresso-prize.png'
     }
   ],
 
