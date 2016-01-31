@@ -23,9 +23,9 @@ module.exports = {
   },
 
   renderWin: function(prize) {
-    $('#winner #winningStatement').html('You have a won a ' + prize.name + '!');
+    $('#winner #winningStatement').html('You have a won a free ' + prize.name + '!');
     $('#winner #winningImage').attr('src', prize.imgSrc);
-    $('#winner').show();
+    $('#winner').fadeIn(400);
   },
 
   render: function() {

@@ -1,0 +1,10 @@
+h1, h2, h3, p, div {
+  font-family: 'Righteous', cursive;
+}
+
+h1.title {
+  font-size: 70px;
+  text-align: center;
+  padding-top: 30px;
+  min-width: $minWidth;
+}

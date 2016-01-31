@@ -8,15 +8,15 @@ module.exports = {
   prizes: [
     {
       name: 'Coffee',
-      imgSrc: 'http://placehold.it/350x350'
+      imgSrc: 'img/coffee-prize.png'
     },
     {
       name: 'Tea',
-      imgSrc: 'http://placehold.it/350x350'
+      imgSrc: 'img/tea-prize.png'
     },
     {
       name: 'Espresso',
-      imgSrc: 'http://placehold.it/350x350'
+      imgSrc: 'img/espresso-prize.png'
     }
   ],
 
@@ -62,7 +62,7 @@ module.exports = {
         global.emitter.emit('win', this.prizes[matchPanel]);
       } else {
         this.winsLosses[1]++;
-        global.emitter.emit('loss');
+        global.emitter.emit('win', this.prizes[matchPanel]);
       }
       global.emitter.emit('spinDone', this.winsLosses);
     }.bind(this), 500)
