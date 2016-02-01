@@ -36,7 +36,8 @@ gulp.task('sass', function() {
 // Copy index.html over
 gulp.task('html', function() {
   return gulp.src('client/index.html')
-    .pipe(gulp.dest('./public'));
+    .pipe(gulp.dest('./public'))
+    .pipe(gulp.dest('./build'));
 });
 
 gulp.task('html-watch', ['html'], browserSync.reload);
@@ -44,7 +45,8 @@ gulp.task('html-watch', ['html'], browserSync.reload);
 // Copy images over
 gulp.task('img', function() {
   return gulp.src('client/img/**')
-    .pipe(gulp.dest('./public/img'));
+    .pipe(gulp.dest('./public/img'))
+    .pipe(gulp.dest('./build/img'));
 });
 
 // Minification for build
@@ -58,12 +60,11 @@ gulp.task('minify', ['sass'], function() {
 gulp.task('uglify', ['js'], function() {
   return gulp.src('public/app.js')
     .pipe(uglify())
-    .pipe(rename('app.min.js'))
     .pipe(gulp.dest('build'));
 });
 
 // Main tasks associated with Gulpfile: Build, Watch, and Default
-gulp.task('build', ['uglify', 'minify']);
+gulp.task('build', ['uglify', 'minify', 'img', 'html']);
 
 gulp.task('watch', function() {
   browserSync.init({
