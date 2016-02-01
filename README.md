@@ -5,7 +5,8 @@ A slot machine game built using the MVC architecture, jQuery, SASS, Gulp, and Br
 
 1. Clone to your local machine
 2. Run `npm install`
-3. Run `gulp`
+3. Run `gulp` for developing with live reload
+4. Run `gulp build` to produce the minified output in the `build/` directory
 
 ## Overview
 This is a simple slot machine. The user clicks on the lever and if the stars align (actually the slots...), the user will be presented with a winner modal displaying their prize. 
