@@ -1,0 +1,225 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Espresso Bar Slot Machine</title>
+    <script src="https://code.jquery.com/jquery-2.2.0.js"></script>
+    <style>
+    .container {
+      width: 210px;
+      height: 140px;
+      position: relative;
+      perspective: 1000px;
+    }
+
+    .carousel {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      transform-style: preserve-3d;
+      transition: transform .4s;
+    }
+
+    .carousel figure {
+      margin: 0;
+      display: block;
+      position: absolute;
+      width: 186px;
+      height: 116px;
+      left: 10px;
+      top: 10px;
+      border: 2px solid black;
+      text-align: center;
+      line-height: 116px;
+      font-size: 120px;
+      color: black;
+      background-color: blue;
+    }
+
+    .carousel figure:nth-child(1) { transform: rotateY(0deg) translateZ(60px); }
+    .carousel figure:nth-child(2) { transform: rotateY(120deg) translateZ(60px);}
+    .carousel figure:nth-child(3) { transform: rotateY(240deg) translateZ(60px); }
+    </style>
+  </head>
+  <body>
+    <section class="container">
+      <div class="carousel slot-1">
+        <figure>1</figure>
+        <figure>2</figure>
+        <figure>3</figure>
+      </div>
+    </section>
+    <section class="container">
+      <div class="carousel slot-2">
+        <figure>1</figure>
+        <figure>2</figure>
+        <figure>3</figure>
+      </div>
+    </section>
+    <section class="container">
+      <div class="carousel slot-3">
+        <figure>1</figure>
+        <figure>2</figure>
+        <figure>3</figure>
+      </div>
+    </section>
+    <button id="panel1">Panel 1</button>
+    <button id="panel2">Panel 2</button>
+    <button id="panel3">Panel 3</button>
+    <button id="next">Next</button>
+    <button id="start">Start</button>
+    <button id="stop">Stop</button>
+    <button id="start1">Start 1</button>
+    <button id="start2">Start 2</button>
+    <button id="start3">Start 3</button>
+    <button id="startAll">Start All</button>
+    <button id="stopAll">Stop All</button>
+    <h2>Panel is: <span id="result">0</span></h2>
+    <script>
+    $('#panel1').click(function() {
+      $('.carousel').css({
+        transform: 'translateZ(-60px) rotateY(-0deg)'
+      })
+    });
+    $('#panel2').click(function() {
+      $('.carousel').css({
+        transform: 'translateZ(-60px) rotateY(-120deg)'
+      })
+    });
+    $('#panel3').click(function() {
+      $('.carousel').css({
+        transform: 'translateZ(-60px) rotateY(-240deg)'
+      })
+    });
+    var currentAngle = 0;
+    // $('#next').click(function() {
+    //   currentAngle += 120;
+    //   $('.carousel').css({
+    //     transform: 'translateZ(-60px) rotateY(-' + currentAngle + 'deg)'
+    //   });
+    // });
+
+    function Slot(currPanel, $el) {
+      this.currPanel = currPanel;
+      this.currentAngle = 0;
+      this.isRunning = false;
+      this.$el = $el;
+    }
+
+    Slot.prototype.start = function () {
+      var slot = this;
+      var el = this.$el;
+      this.isRunning = true;
+      this.timer = setInterval(function() {
+        slot.currentAngle += 120;
+        console.log('current angle is', slot.currentAngle);
+        $('#result').html(++slot.currentPanel % 3);
+        el.css({
+          transform: 'translateZ(-60px) rotateY(-' + slot.currentAngle + 'deg)'
+        });
+      }, 100);
+    };
+
+    Slot.prototype.stop = function() {
+      this.isRunning = false;
+      clearInterval(this.timer);
+    }
+
+    var a = new Slot(0, $('.slot-1'));
+    var b = new Slot(0, $('.slot-2'));
+    var c = new Slot(0, $('.slot-3'));
+
+    var slots = [a,b,c];
+
+    function startAll() {
+      slots.forEach(function(slot) {
+        console.log('starting!');
+        slot.start();
+      });
+    }
+
+    function stopAll() {
+      slots.forEach(function(slot) {
+        console.log('slot is', slot);
+        console.log('stopping!');
+        slot.stop();
+      });
+    }
+
+    function stopAll() {
+      for (var i = 0; i < slots.length; i++) {
+        var currSlot = slots[i];
+        setTimeout(function () {
+          currSlot.stop();
+        }, 500);
+      }
+    }
+
+    function stopAll() {
+      for (var i = 0; i < slots.length; i++) {
+        (function(i) {
+          var currSlot = slots[i];
+          setTimeout(function() {
+            currSlot.stop();
+          }, 1000 * i);
+        })(i);
+      }
+    }
+
+
+    $('#startAll').click(startAll);
+    $('#stopAll').click(stopAll);
+
+    $('#start1').click(function() {
+      if (!a.isRunning) {
+        a.start();
+        a.isRunning = true;
+      } else {
+        a.isRunning = false;
+        a.stop();
+      }
+      // a.isRunning = !a.isRunning;
+      console.log('is running?', a.isRunning);
+      console.log('a is', a);
+    });
+
+    $('#start2').click(function() {
+      if (!b.isRunning) {
+        b.start();
+        b.isRunning = true;
+      } else {
+        b.stop();
+        b.isRunning = false;
+      }
+      // b.isRunning = !b.isRunning;
+    });
+
+    $('#start3').click(function() {
+      if (!c.isRunning) {
+        c.start();
+        c.isRunning = true;
+      } else {
+        c.stop();
+        c.isRunning = false;
+      }
+      // c.isRunning = !c.isRunning;
+    });
+
+    var currentPanel = 0;
+    var timer;
+    $('#start').click(function() {
+      timer = setInterval(function() {
+        currentAngle += 120;
+        $('#result').html(++currentPanel % 3);
+        $('.carousel').css({
+          transform: 'translateZ(-60px) rotateY(-' + currentAngle + 'deg)'
+        });
+      }, 100);
+    });
+
+    $('#stop').click(function() {
+      clearInterval(timer);
+    });
+    </script>
+  </body>
+</html>
